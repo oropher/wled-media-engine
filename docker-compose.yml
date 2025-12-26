@@ -1,0 +1,11 @@
+services:
+  wled-media-engine:
+    container_name: wled-media-engine
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
