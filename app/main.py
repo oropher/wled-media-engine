@@ -1,11 +1,12 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from app.api.health import router as health_router
+from pathlib import Path
 
 app = FastAPI(title="WLED Media Engine")
 
-app.mount("/static", StaticFiles(directory="app/static"), name="static")
+app.include_router(health_router)
 
-@app.get("/")
-def index():
-    return FileResponse("app/static/index.html")
+# Obtener la ruta absoluta del directorio static
+static_dir = Path(__file__).parent / "static"
+app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")
