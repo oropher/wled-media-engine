@@ -1,0 +1,11 @@
+{
+  "matrix": {
+    "width": 20,
+    "height": 20
+  },
+  "wled": {
+    "ip": "192.168.50.187",
+    "port": 80,
+    "protocol": "http"
+  }
+}
